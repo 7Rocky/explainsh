@@ -63,9 +63,9 @@ $ docker run --rm -it 7rocky/explainsh <command>
 If you want to build and run the image locally:
 
 ```console
-cd explainsh/
-docker build -t explainsh .
-docker run --rm -it explainsh <command>
+$ cd explainsh/
+$ docker build -t explainsh .
+$ docker run --rm -it explainsh <command>
 ```
 
 And again, if the `<command>` contains special characters, wrap it between single quotes.
