@@ -24,6 +24,48 @@ As easy as using https://explainshell.com:
 $ explainsh <command>
 ```
 
+For example:
+
+```console
+$ explainsh nmap -sC -sV -p22,80 10.10.10.10
+
+Network exploration tool and security / port scanner
+
+-sC .
+    Performs a script scan using the default set of scripts. It is equivalent to --script=default. Some
+    of the scripts in this category are considered intrusive and should not be run against a target
+    network without permission.
+
+-sV (Version detection) .
+    Enables version detection, as discussed above. Alternatively, you can use -A, which enables version
+    detection among other things.
+
+-p port ranges (Only scan specified ports) .
+    This option specifies which ports you want to scan and overrides the default. Individual port numbers
+    are OK, as are ranges separated by a hyphen (e.g.  1-1023). The beginning and/or end values of a
+    range may be omitted, causing Nmap to use 1 and 65535, respectively. So you can specify -p- to scan
+    ports from 1 through 65535. Scanning port zero.  is allowed if you specify it explicitly. For IP
+    protocol scanning (-sO), this option specifies the protocol numbers you wish to scan for (0–255).
+
+    When scanning both TCP and UDP ports, you can specify a particular protocol by preceding the port
+    numbers by T: or U:. The qualifier lasts until you specify another qualifier. For example, the
+    argument -p U:53,111,137,T:21-25,80,139,8080 would scan UDP ports 53, 111,and 137, as well as the
+    listed TCP ports. Note that to scan both UDP and TCP, you have to specify -sU and at least one TCP
+    scan type (such as -sS, -sF, or -sT). If no protocol qualifier is given, the port numbers are added
+    to all protocol lists.  Ports can also be specified by name according to what the port is referred to
+    in the nmap-services. You can even use the wildcards * and ? with the names. For example, to scan FTP
+    and all ports whose names begin with “http”, use -p ftp,http*. Be careful about shell expansions and
+    quote the argument to -p if unsure.
+
+    Ranges of ports can be surrounded by square brackets to indicate ports inside that range that appear
+    in nmap-services. For example, the following will scan all ports in nmap-services equal to or below
+    1024: -p [-1024]. Be careful with shell expansions and quote the argument to -p if unsure.
+
+nmap [Scan Type...] [Options] {target specification}
+
+http://manpages.ubuntu.com/manpages/precise/en/man1/nmap.html
+```
+
 However, if the `<command>` contains special characters, it needs to be wrapped between single quotes.
 
 And if the `<command>` contains single quotes, then each single quote must be escaped (`\'`) or duplicated (`''`).
