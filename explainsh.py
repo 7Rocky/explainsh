@@ -53,7 +53,7 @@ def get_url(url: str) -> str:
     try:
         return html.unescape(urllib.request.urlopen(url).read().decode())
     except:
-        print(f'\n{RED}Some error ocurred while fetching {url}{RESET}')
+        print(f'\n{RED}Some error occurred while fetching {url}{RESET}')
         sys.exit(1)
 
 
